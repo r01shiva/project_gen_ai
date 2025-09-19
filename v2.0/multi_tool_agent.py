@@ -6,7 +6,7 @@ import random
 class AIAgent:
     def __init__(self):
         self.tools = {
-            'get_time': self.get_current_time,
+            'get_current_time': self.get_current_time,
             'calculate': self.calculator,
             'weather_info': self.get_weather_info,
             'note_keeper': self.note_keeper
@@ -68,7 +68,7 @@ class AIAgent:
         Analyze this user request and determine which tools to use: {user_input}
         
         Available tools:
-        - get_time(format_type="full/date/time"): Get current date/time
+        - get_current_time(format_type="full/date/time"): Get current date/time
         - calculate(expression="math expression"): Perform calculations
         - weather_info(location="place"): Get weather information  
         - note_keeper(action="add/list/clear", note="text"): Manage notes
@@ -102,7 +102,7 @@ class AIAgent:
                 
                 # For demo, let's handle common cases manually
                 if "time" in user_input.lower() or "date" in user_input.lower():
-                    result = self.get_time()
+                    result = self.get_current_time()
                     tool_results.append(f"Current time: {result}")
                 
                 if any(op in user_input for op in ['+', '-', '*', '/', 'calculate']):
