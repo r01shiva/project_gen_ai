@@ -9,7 +9,7 @@ class SimpleRAG:
     
     def load_documents(self):
         """Load text documents from a folder"""
-        docs_folder = "documents"  # Create this folder and add .txt files
+        docs_folder = "rag_input"  # Create this folder and add .txt files
         
         if not os.path.exists(docs_folder):
             os.makedirs(docs_folder)
@@ -32,12 +32,12 @@ class SimpleRAG:
             content_lower = content.lower()
             score = sum(1 for word in query_words if word in content_lower)
             
-            if score > 0:
+            if score > 2:
                 relevant_docs.append((doc_name, content, score))
         
         # Sort by relevance score
         relevant_docs.sort(key=lambda x: x[2], reverse=True)
-        return relevant_docs[:2]  # Return top 2 most relevant
+        return relevant_docs[:1]  # Return top 2 most relevant
     
     def answer_question(self, question):
         """Generate answer using retrieved documents"""
